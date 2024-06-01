@@ -1,30 +1,24 @@
-import { useState } from "react";
-import InputComponent from "../components/InputComponent";
+import CardComponent from "../components/CardComponent";
+import { getSquare } from "../lib/square";
 
 export default function App() {
-  const [xDimPanel, setxDimPanel] = useState(0);
-  const [yDimPanel, setyDimPanel] = useState(0);
-  const [xDimContainer, setxDimContainer] = useState(0);
-  const [yDimContainer, setyDimContainer] = useState(0);
-
   return (
-    <div className="grid justify-items-center p-4 w-screen h-screen bg-zinc-800 text-slate-50 ">
-      <div className="flex flex-col space-y-3 w-3/4">
-        <article className="space-y-3  gap-3">
-          <h1>Cuadrado</h1>
-          <section>
-            <div className="flex flex-row gap-2">
-              <InputComponent value={xDimContainer} setValue={setxDimContainer} label="Dimensión X Container"/>
-              <InputComponent value={yDimContainer} setValue={setyDimContainer} label="Dimensión Y Container"/>
-            </div>
-            <div className="flex flex-row gap-2">
-              <InputComponent value={xDimPanel} setValue={setxDimPanel} label="Dimensión X Panel"/>
-              <InputComponent value={yDimPanel} setValue={setyDimPanel} label="Dimensión Y Panel"/>
-            </div>
-          </section>
-        </article>
-        <div>Triangulo</div>
-      </div>
+    <div className="grid justify-items-center w-screen h-screen bg-zinc-800 text-slate-50  justifiy-center">
+      <nav className="flex flex-row bg-zinc-900 w-full justify-center p-5 h-16">
+        <h1 className="text-lg font-semibold">
+          Calculadoras de paneles solares
+        </h1>
+      </nav>
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-3 place-content-between mx-auto p-6">
+        <CardComponent
+          calculator={getSquare}
+          title="Contenedor Cuadrado"
+        />
+        <CardComponent
+          calculator={getSquare}
+          title="Contenedor Triangular"
+        />
+      </main>
     </div>
   );
 }

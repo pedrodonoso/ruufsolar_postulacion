@@ -4,13 +4,13 @@ import { getTriangle } from "../lib/triangle";
 
 export default function App() {
   return (
-    <div className="grid justify-items-center w-screen h-screen bg-zinc-800 text-slate-50  justifiy-center">
-      <nav className="flex flex-row bg-zinc-900 w-full justify-center p-5 h-16">
+    <div className="felx justifiy-center justify-items-center w-screen h-full md:h-screen bg-zinc-800 text-slate-50">
+      <nav className="flex flex-row bg-zinc-900 w-full h-16 justify-center p-5">
         <h1 className="text-lg font-semibold">
           Calculadoras de paneles solares
         </h1>
       </nav>
-      <main className="grid grid-cols-1 md:grid-cols-2 gap-3 place-content-between mx-auto p-6">
+      <main className="grid grid-cols-1 md:grid-cols-2 gap-3 place-items-center p-6 w-fit mx-auto">
         <CardComponent
           calculator={getSquare}
           labels={{

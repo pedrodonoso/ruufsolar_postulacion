@@ -24,7 +24,7 @@ Por ejemplo, podríamos decir que en el siguiente ejemplo caben 5 rectángulos d
 
 ### Ejecución
 
-Para ejecutar la resolución debe ejecutar lo siguiente:
+Para ejecutar la resolución:
 
 ```bash
 cd ruufsolar

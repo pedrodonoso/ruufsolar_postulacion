@@ -1,5 +1,6 @@
 import CardComponent from "../components/CardComponent";
 import { getSquare } from "../lib/square";
+import { getTriangle } from "../lib/triangle";
 
 export default function App() {
   return (
@@ -12,10 +13,22 @@ export default function App() {
       <main className="grid grid-cols-1 md:grid-cols-2 gap-3 place-content-between mx-auto p-6">
         <CardComponent
           calculator={getSquare}
+          labels={{
+            dpc: "Dimensión Principal del Contenedor",
+            dsc: "Dimensión Secundaria del Contenedor",
+            dpp: "Dimensión Principal del Panel",
+            dsp: "Dimensión Secundaria del Panel",
+          }}
           title="Contenedor Cuadrado"
         />
         <CardComponent
-          calculator={getSquare}
+          calculator={getTriangle}
+          labels={{
+            dpc: "Base del triangulo contenedor",
+            dsc: "Altura del triangulo contenedor",
+            dpp: "Dimensión Principal del Panel",
+            dsp: "Dimensión Secundaria del Panel",
+          }}
           title="Contenedor Triangular"
         />
       </main>

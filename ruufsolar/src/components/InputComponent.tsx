@@ -1,6 +1,6 @@
 interface InputComponentArgs {
   label: string;
-  value: number;
+  value: number | undefined;
   setValue: (value: number) => void;
 }
 export default function InputComponent({
@@ -10,7 +10,7 @@ export default function InputComponent({
 }: InputComponentArgs) {
   return (
     <div className="p-1 w-full">
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+      <label className="block mb-2 text-sm font-light text-gray-900 dark:text-white">
         {label}
       </label>
       <input

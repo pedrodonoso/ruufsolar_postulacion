@@ -1,21 +1,36 @@
 import { useState } from "react";
 import InputComponent from "./InputComponent";
-import { CalculatorArgs } from "../interfaces/CalculatorInterface";
+import {
+  CalculatorArgs,
+  LabelsObject,
+} from "../interfaces/CalculatorInterface";
+
+interface CardComponentProps {
+  calculator: (args: CalculatorArgs) => number;
+  labels: LabelsObject;
+  title: string;
+}
 
 export default function CardComponent({
   calculator,
+  labels,
   title,
-}: {
-  calculator: ({ dpc, dsc, dpp, dsp }: CalculatorArgs) => number;
-  title: string;
-}) {
-  const [xDimPanel, setxDimPanel] = useState(0);
-  const [yDimPanel, setyDimPanel] = useState(0);
-  const [xDimContainer, setxDimContainer] = useState(0);
-  const [yDimContainer, setyDimContainer] = useState(0);
-  const [result, setResult] = useState(0);
+}: CardComponentProps) {
+  const [xDimPanel, setxDimPanel] = useState<number | undefined>(undefined);
+  const [yDimPanel, setyDimPanel] = useState<number | undefined>(undefined);
+  const [xDimContainer, setxDimContainer] = useState<number | undefined>(
+    undefined
+  );
+  const [yDimContainer, setyDimContainer] = useState<number | undefined>(
+    undefined
+  );
+  const [result, setResult] = useState<number | undefined>(undefined);
 
   const onClick = () => {
+    if (!xDimPanel || !yDimPanel || !xDimContainer || !yDimContainer) {
+      setResult(undefined);
+      return;
+    }
     const result = calculator({
       dpc: xDimContainer,
       dsc: yDimContainer,
@@ -35,24 +50,24 @@ export default function CardComponent({
           <InputComponent
             value={xDimContainer}
             setValue={setxDimContainer}
-            label="Dimensión X Container"
+            label={labels.dpc}
           />
           <InputComponent
             value={yDimContainer}
             setValue={setyDimContainer}
-            label="Dimensión Y Container"
+            label={labels.dsc}
           />
         </div>
         <div className="flex flex-row">
           <InputComponent
             value={xDimPanel}
             setValue={setxDimPanel}
-            label="Dimensión X Panel"
+            label={labels.dpp}
           />
           <InputComponent
             value={yDimPanel}
             setValue={setyDimPanel}
-            label="Dimensión Y Panel"
+            label={labels.dsp}
           />
         </div>
         <div className="flex flex-row">
@@ -68,8 +83,9 @@ export default function CardComponent({
           Resultado:
         </div>
         <div className="flex flex-row">
-          <div className="text-sm font-lg text-gray-500 dark:text-gray-300  mx-auto">
-            {result} Paneles
+          <div className="flex space-x-2 text-sm font-lg text-gray-500 dark:text-gray-300  mx-auto">
+            {result === undefined && "Faltan datos."}
+            {result !== undefined && `${result} Paneles`}
           </div>
         </div>
       </form>

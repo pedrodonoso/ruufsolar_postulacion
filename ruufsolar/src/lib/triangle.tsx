@@ -23,7 +23,7 @@ function divPiso(B: number, b: number, x: number) {
   return { p_piso, l_piso };
 }
 
-export function getTriangle({ dpc, dsc, dpp, dsp }: CalculatorArgs) {
+export function getTDim({ dpc, dsc, dpp, dsp }: CalculatorArgs) {
   //dpc: B, dsc: H, dpp: x, dsp: y
   const pisos = op(dsc, dsp); // cantidad de pisos # altura contenedor / altura panel
   const C = hip_CaCo(dsc, dpc / 2); // cateto contenedor # cateto adyacente: H, opuesto: B/2
@@ -42,4 +42,13 @@ export function getTriangle({ dpc, dsc, dpp, dsp }: CalculatorArgs) {
     result += p_piso;
   }
   return result;
+}
+
+export function getTriangle({ dpc, dsc, dpp, dsp }: CalculatorArgs) {
+  // Orientación 1
+  const dimP = getTDim({ dpc, dsc, dpp, dsp });
+  // Orientación 2
+  const dimS = getTDim({ dpc, dsc, dpp: dsp, dsp: dpp });
+  const result = [dimP, dimS];
+  return Math.max(...result);
 }

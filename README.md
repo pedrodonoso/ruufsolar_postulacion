@@ -62,3 +62,9 @@ Dado lo anterior, obtenemos las dimensiones del triangulo restante de la fila ba
 Luego es cuestión de aplicar el mismo algoritmo para un triangulo contenedor de base igual a la base del contenedor original menos dos veces la base del triangulo restante basal(**B - 2\*b**).
 
 Para este caso, suponemos que el panel no cabe en los triangulos restantes en otras posiciones.
+
+## Video 
+
+https://github.com/pedrodonoso/ruufsolar_postulacion/assets/21249841/f720c91e-a336-48d4-a82a-389041141e1a
+
+
